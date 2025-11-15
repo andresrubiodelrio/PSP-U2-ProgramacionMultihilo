@@ -26,7 +26,15 @@ public class CreacionHilosAnonimoRunnable {
         System.out.println("[1]Soy el hilo principal y me llamo: " + Thread.currentThread().getName());
         System.out.println("[1]Voy a ejecutar un hilo de una clase anónima que implementa la interfaz Runnable\n");
 
-        hilo1.start();
+        try {
+            hilo1.start();
+            hilo1.start();
+        }
+        catch (IllegalThreadStateException e)
+        {
+            System.out.println("ERROR: Se está llamando más de una vez al método start del hilo.");
+        }
+
         System.out.println("[3]Soy el hilo principal y me llamo: " + Thread.currentThread().getName());
 
 
